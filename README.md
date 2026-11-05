@@ -39,6 +39,26 @@ template's own artwork in `public/brand/`. Content slides take `center: true` (c
 the template's grid layouts) and `bg: sand`. Template illustrations and pictograms are in
 `public/images/illustrations` and `public/images/pictograms`.
 
+## Hosting
+
+The deck is published at **https://npdeehan.github.io/agentic-orchestration-workshop/** by
+`.github/workflows/deploy.yml`, which builds and deploys on every push to `main` (about two
+minutes). Attendees get there from the QR code slide after the challenge menu.
+
+This repo is **public**, so:
+
+- Keep `customer: ''` in `slides.md` for anything you push. Set a customer name locally if you
+  present a tailored version, but don't commit it.
+- `sourceMaterial/` and `judging/hidden-prompts.ts` are git-ignored and exist only on your machine.
+  To use `/judge` on a fresh clone, copy `judging/hidden-prompts.example.ts` to `hidden-prompts.ts`.
+- The hosted site has no presenter mode (`presenter: dev`), so speaker notes stay private. `/judge`
+  and the `/nav` Export PDF button only work with `npm run dev`.
+- The site lives under `/agentic-orchestration-workshop/`. Static `src="/images/..."` paths are
+  rewritten by the build, but paths built in script must go through `asset()` from
+  `composables/asset.ts`.
+- `public/images/qr-site.svg` encodes the site URL. If the URL changes, regenerate it with the
+  `uqr` package (already installed with Slidev) and update the link on that slide.
+
 ## Per-workshop settings
 
 Edit the headmatter at the top of `slides.md`:
