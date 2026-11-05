@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_AgentToolTypes" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Workshop deck generator" exporterVersion="1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <bpmn:process id="AgentToolTypes" name="Agent tool types" isExecutable="true">
+    <bpmn:startEvent id="start">
+      <bpmn:outgoing>f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:adHocSubProcess id="agent" name="Agent">
+      <bpmn:incoming>f1</bpmn:incoming>
+      <bpmn:outgoing>f2</bpmn:outgoing>
+      <bpmn:serviceTask id="single" name="Single task">
+      </bpmn:serviceTask>
+      <bpmn:callActivity id="call" name="Call a process">
+      </bpmn:callActivity>
+      <bpmn:serviceTask id="seq_one" name="Task one">
+        <bpmn:outgoing>f3</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="seq_two" name="Task two">
+        <bpmn:incoming>f3</bpmn:incoming>
+      </bpmn:serviceTask>
+      <bpmn:userTask id="review" name="Human review">
+        <bpmn:outgoing>f4</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="gw_ok" name="Approved?">
+        <bpmn:incoming>f4</bpmn:incoming>
+        <bpmn:outgoing>f5</bpmn:outgoing>
+        <bpmn:outgoing>f6</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:serviceTask id="next" name="Next task">
+        <bpmn:incoming>f5</bpmn:incoming>
+      </bpmn:serviceTask>
+      <bpmn:endEvent id="end_no">
+        <bpmn:incoming>f6</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="f3" sourceRef="seq_one" targetRef="seq_two" />
+      <bpmn:sequenceFlow id="f4" sourceRef="review" targetRef="gw_ok" />
+      <bpmn:sequenceFlow id="f5" name="Yes" sourceRef="gw_ok" targetRef="next" />
+      <bpmn:sequenceFlow id="f6" name="No" sourceRef="gw_ok" targetRef="end_no" />
+    </bpmn:adHocSubProcess>
+    <bpmn:endEvent id="end">
+      <bpmn:incoming>f2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="f1" sourceRef="start" targetRef="agent" />
+    <bpmn:sequenceFlow id="f2" sourceRef="agent" targetRef="end" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_AgentToolTypes">
+    <bpmndi:BPMNPlane id="BPMNPlane_AgentToolTypes" bpmnElement="AgentToolTypes">
+      <bpmndi:BPMNShape id="start_di" bpmnElement="start">
+        <dc:Bounds x="150" y="292" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="agent_di" bpmnElement="agent" isExpanded="true">
+        <dc:Bounds x="250" y="110" width="740" height="400" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="single_di" bpmnElement="single">
+        <dc:Bounds x="300" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="call_di" bpmnElement="call">
+        <dc:Bounds x="440" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="seq_one_di" bpmnElement="seq_one">
+        <dc:Bounds x="300" y="360" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="seq_two_di" bpmnElement="seq_two">
+        <dc:Bounds x="440" y="360" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="review_di" bpmnElement="review">
+        <dc:Bounds x="620" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="gw_ok_di" bpmnElement="gw_ok" isMarkerVisible="true">
+        <dc:Bounds x="770" y="265" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="740.0" y="231" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="next_di" bpmnElement="next">
+        <dc:Bounds x="860" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_no_di" bpmnElement="end_no">
+        <dc:Bounds x="777" y="380" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_di" bpmnElement="end">
+        <dc:Bounds x="1050" y="292" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="f1_di" bpmnElement="f1">
+        <di:waypoint x="186" y="310.0" />
+        <di:waypoint x="250" y="310.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f2_di" bpmnElement="f2">
+        <di:waypoint x="990" y="310.0" />
+        <di:waypoint x="1050" y="310.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f3_di" bpmnElement="f3">
+        <di:waypoint x="400" y="400.0" />
+        <di:waypoint x="440" y="400.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f4_di" bpmnElement="f4">
+        <di:waypoint x="720" y="290.0" />
+        <di:waypoint x="770" y="290.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f5_di" bpmnElement="f5">
+        <di:waypoint x="820" y="290.0" />
+        <di:waypoint x="860" y="290.0" />
+        <bpmndi:BPMNLabel><dc:Bounds x="820" y="273" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f6_di" bpmnElement="f6">
+        <di:waypoint x="795" y="315" />
+        <di:waypoint x="795" y="380" />
+        <bpmndi:BPMNLabel><dc:Bounds x="800" y="328" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

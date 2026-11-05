@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_OnboardingAgentPhase1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Workshop deck generator" exporterVersion="1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <bpmn:process id="OnboardingAgentPhase1" name="Onboarding agent (phase 1)" isExecutable="true">
+    <bpmn:startEvent id="start" name="Request received">
+      <bpmn:outgoing>f_start</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:adHocSubProcess id="agent" name="Onboarding agent">
+      <bpmn:incoming>f_start</bpmn:incoming>
+      <bpmn:outgoing>f_end</bpmn:outgoing>
+      <bpmn:serviceTask id="tool_search_customer" name="Search for customer">
+        <bpmn:documentation>Use this tool to search for details of an existing customer.</bpmn:documentation>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="tool_create_customer" name="Create customer">
+        <bpmn:documentation>Use this tool to create a new customer record.</bpmn:documentation>
+      </bpmn:serviceTask>
+      <bpmn:userTask id="tool_respond" name="Show response to user">
+        <bpmn:documentation>Use this tool for all communication with the end user: answers, follow-up questions and clarifications.</bpmn:documentation>
+      </bpmn:userTask>
+    </bpmn:adHocSubProcess>
+    <bpmn:endEvent id="end" name="Request handled">
+      <bpmn:incoming>f_end</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="f_start" sourceRef="start" targetRef="agent" />
+    <bpmn:sequenceFlow id="f_end" sourceRef="agent" targetRef="end" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_OnboardingAgentPhase1">
+    <bpmndi:BPMNPlane id="BPMNPlane_OnboardingAgentPhase1" bpmnElement="OnboardingAgentPhase1">
+      <bpmndi:BPMNShape id="start_di" bpmnElement="start">
+        <dc:Bounds x="150" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="113.0" y="304" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="agent_di" bpmnElement="agent" isExpanded="true">
+        <dc:Bounds x="250" y="140" width="480" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="tool_search_customer_di" bpmnElement="tool_search_customer">
+        <dc:Bounds x="300" y="240" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="tool_create_customer_di" bpmnElement="tool_create_customer">
+        <dc:Bounds x="440" y="240" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="tool_respond_di" bpmnElement="tool_respond">
+        <dc:Bounds x="580" y="240" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_di" bpmnElement="end">
+        <dc:Bounds x="800" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="763.0" y="304" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="f_start_di" bpmnElement="f_start">
+        <di:waypoint x="186" y="280.0" />
+        <di:waypoint x="250" y="280.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f_end_di" bpmnElement="f_end">
+        <di:waypoint x="730" y="280.0" />
+        <di:waypoint x="800" y="280.0" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

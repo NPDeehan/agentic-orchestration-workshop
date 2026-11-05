@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-png
+*.local
+.slidev
+*.pdf
+
+# The repo is public (GitHub Pages). Keep private material out of it; these stay on disk only.
+sourceMaterial/
+judging/hidden-prompts.ts

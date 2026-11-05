@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="8db3fbb" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <bpmn:process id="Process_1njnyph" name="Onboarding agent" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="Form_06sy1ip" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1u35t0n</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1u35t0n" sourceRef="StartEvent_1" targetRef="Activity_09ymdth" />
+    <bpmn:endEvent id="Event_062mefk">
+      <bpmn:incoming>Flow_0cfwpz5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0cfwpz5" sourceRef="Activity_09ymdth" targetRef="Event_062mefk" />
+    <bpmn:adHocSubProcess id="Activity_09ymdth" name="Onboarding agent" zeebe:modelerTemplate="io.camunda.connectors.agenticai.ai-agent-subprocess.v2" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNBNTZFRkYiLz4KPG1hc2sgaWQ9InBhdGgtMi1vdXRzaWRlLTFfMTg1XzYiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjQiIHk9IjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iYmxhY2siPgo8cmVjdCBmaWxsPSJ3aGl0ZSIgeD0iNCIgeT0iNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIvPgo8L21hc2s+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4wMTA1IDEyLjA5ODdDMTguNDkgMTAuNTg5NCAxNy4xNTk0IDguMTA4MTQgMTYuMTc5OSA2LjAxMTAzQzE2LjE1MiA2LjAwNDUxIDE2LjExNzYgNiAxNi4wNzk0IDZDMTYuMDQxMSA2IDE2LjAwNjYgNi4wMDQ1MSAxNS45Nzg4IDYuMDExMDRDMTQuOTk5NCA4LjEwODE0IDEzLjY2OTcgMTAuNTg4OSAxMi4xNDgxIDEyLjA5ODFDMTAuNjI2OSAxMy42MDcxIDguMTI1NjggMTQuOTI2NCA2LjAxMTU3IDE1Ljg5ODFDNi4wMDQ3NCAxNS45MjYxIDYgMTUuOTYxMSA2IDE2QzYgMTYuMDM4NyA2LjAwNDY4IDE2LjA3MzYgNi4wMTE0NCAxNi4xMDE0QzguMTI1MTkgMTcuMDcyOSAxMC42MjYyIDE4LjM5MTkgMTIuMTQ3NyAxOS45MDE2QzEzLjY2OTcgMjEuNDEwNyAxNC45OTk2IDIzLjg5MiAxNS45NzkxIDI1Ljk4OUMxNi4wMDY4IDI1Ljk5NTYgMTYuMDQxMSAyNiAxNi4wNzkzIDI2QzE2LjExNzUgMjYgMTYuMTUxOSAyNS45OTU0IDE2LjE3OTYgMjUuOTg5QzE3LjE1OTEgMjMuODkyIDE4LjQ4ODggMjEuNDExIDIwLjAwOTkgMTkuOTAyMU0yMC4wMDk5IDE5LjkwMjFDMjEuNTI1MyAxOC4zOTg3IDIzLjk0NjUgMTcuMDY2OSAyNS45OTE1IDE2LjA4MjRDMjUuOTk2NSAxNi4wNTkzIDI2IDE2LjAzMSAyNiAxNS45OTk3QzI2IDE1Ljk2ODQgMjUuOTk2NSAxNS45NDAzIDI1Ljk5MTUgMTUuOTE3MUMyMy45NDc0IDE0LjkzMjcgMjEuNTI1OSAxMy42MDEgMjAuMDEwNSAxMi4wOTg3IiBzdHJva2U9IiM0OTFEOEIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFzaz0idXJsKCNwYXRoLTItb3V0c2lkZS0xXzE4NV82KSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda.agenticai:aiagent:subprocess:2" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="bedrock" target="provider.type" />
+          <zeebe:input source="=camunda.secrets.AWS_REGION" target="provider.bedrock.region" />
+          <zeebe:input source="credentials" target="provider.bedrock.authentication.type" />
+          <zeebe:input source="=camunda.secrets.AWS_ACCESS_KEY" target="provider.bedrock.authentication.accessKey" />
+          <zeebe:input source="=camunda.secrets.AWS_SECRET_KEY" target="provider.bedrock.authentication.secretKey" />
+          <zeebe:input source="us.anthropic.claude-sonnet-5" target="provider.bedrock.model.model" />
+          <zeebe:input source="=true" target="provider.bedrock.model.parameters.promptCaching.enabled" />
+          <zeebe:input source="=&#34;You are **TaskAgent**, a helpful, capable agent that can handle a wide variety of customer requests using your own knowledge **and** any tools explicitly provided to you at runtime. &#10;&#10;Remember that the end-user is not able to see your system output. You **must** use the tools provided for all communication. If you need additional information from the user or to provide the answer to the query **ALWAYS** use the communication tools provided - **NEVER** expect your response output to be seen my the user unless it&#39;s sent into those tools&#10;&#10;Prefer a provided tool over guessing whenever it would give a more accurate or reliable answer, and only use tools that were explicitly configured for you (never assume a tool exists). You can call the same tool multiple times with different inputs if that helps complete the request. If no tool fits the request, answer from your own knowledge; if you can&#39;t produce a reliable answer, say so plainly and explain why, rather than guessing.&#34;" target="data.systemPrompt.prompt" />
+          <zeebe:input source="=userPrompt" target="data.userPrompt.prompt" />
+          <zeebe:input source="=agent.context" target="agentContext" />
+          <zeebe:input source="in-process" target="data.memory.storage.type" />
+          <zeebe:input source="=20" target="data.memory.contextWindowSize" />
+          <zeebe:input source="=10" target="data.limits.maxModelCalls" />
+          <zeebe:input source="WAIT_FOR_TOOL_CALL_RESULTS" target="data.events.behavior" />
+          <zeebe:input source="text" target="data.response.format.type" />
+          <zeebe:input source="=false" target="data.response.format.parseJson" />
+          <zeebe:input source="=false" target="data.response.includeAssistantMessage" />
+          <zeebe:input source="=false" target="data.response.includeAgentContext" />
+          <zeebe:input target="agent" />
+          <zeebe:output source="=agent" target="agent" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="1" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.agenticai.ai-agent-subprocess.v2" />
+          <zeebe:header key="retryBackoff" value="PT30S" />
+        </zeebe:taskHeaders>
+        <zeebe:properties>
+          <zeebe:property name="io.camunda.agenticai.toolContainer" value="true" />
+        </zeebe:properties>
+        <zeebe:adHoc outputCollection="toolCallResults" outputElement="={&#10;  id: toolCall._meta.id,&#10;  name: toolCall._meta.name,&#10;  content: toolCallResult,&#10;  completedAt: now()&#10;}" />
+        <zeebe:agentDefinition agentType="aiAgentSubProcess" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1u35t0n</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cfwpz5</bpmn:outgoing>
+      <bpmn:serviceTask id="Activity_18020de" name="Search for customer record" zeebe:modelerTemplate="com.example.camunda.search-customer" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%236f42c1&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Ccircle cx=&#39;11&#39; cy=&#39;11&#39; r=&#39;8&#39;%3E%3C/circle%3E%3Cpath d=&#39;m21 21-4.35-4.35&#39;%3E%3C/path%3E%3Ccircle cx=&#39;11&#39; cy=&#39;8&#39; r=&#39;2&#39;%3E%3C/circle%3E%3Cpath d=&#39;M7 17v-1a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v1&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>Use this tool in order to search for details of a customer</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="query-for-customer" />
+          <zeebe:ioMapping>
+            <zeebe:input source="FLEXIBLE" target="searchMode" />
+            <zeebe:input source="=fromAi(toolCall.customerName, &#34;Optional name filter in flexible mode.&#34;, &#34;string&#34;)" target="customerName" />
+            <zeebe:input source="=fromAi(toolCall.email, &#34;Optional exact email filter in flexible mode.&#34;, &#34;string&#34;)" target="email" />
+            <zeebe:input source="=fromAi(toolCall.customerId, &#34;Optional ID filter in flexible mode.&#34;, &#34;string&#34;)" target="customerId" />
+            <zeebe:input source="=fromAi(toolCall.trustLevel, &#34;Optional trust level filter in flexible mode. Use L1, L2, or L3.&#34;, &#34;string&#34;)" target="trustLevel" />
+            <zeebe:input source="=fromAi(toolCall.fuzzyMatching, &#34;Enable fuzzy matching in flexible mode. Use true or false&#34;, &#34;boolean&#34;)" target="fuzzyMatching" />
+            <zeebe:output source="=customerSearchResult" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:userTask id="Activity_048s4i5" name="See customer details">
+        <bpmn:documentation>Use this tool for all communcation with the end user. The answer to the initial query, any followup or questions or any claifications should all be passed through here.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:formDefinition formId="see-customer-details-0snf0qh" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.communcationForUser, &#34;This is the information your want to rely to the end-user. format in markdown.&#34;, &#34;string&#34;)" target="communcationForUser" />
+            <zeebe:output source="={&#10;  &#34;followupQuestion&#34; : followupQuestion&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+      <bpmn:serviceTask id="Activity_0ol2lhr" name="Create company record" zeebe:modelerTemplate="com.example.camunda.manage-company-record" zeebe:modelerTemplateVersion="8" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%23198754&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Cpath d=&#39;M3 21h18&#39;%3E%3C/path%3E%3Crect x=&#39;5&#39; y=&#39;3&#39; width=&#39;14&#39; height=&#39;18&#39; rx=&#39;1&#39; ry=&#39;1&#39;%3E%3C/rect%3E%3Cpath d=&#39;M9 7h2&#39;%3E%3C/path%3E%3Cpath d=&#39;M13 7h2&#39;%3E%3C/path%3E%3Cpath d=&#39;M9 11h2&#39;%3E%3C/path%3E%3Cpath d=&#39;M13 11h2&#39;%3E%3C/path%3E%3Cpath d=&#39;M11 21v-4h2v4&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>Use this tool in order to create new company records. These records are used to help decide if we can do business with certain companies.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="manage-company-record" />
+          <zeebe:ioMapping>
+            <zeebe:input source="CREATE" target="operation" />
+            <zeebe:input target="companyId" />
+            <zeebe:input source="=fromAi(toolCall.companyName, &#34;This is the name of the company you want ot create.&#34;, &#34;string&#34;)" target="companyName" />
+            <zeebe:input source="=fromAi(toolCall.address, &#34;This is the address of the company.&#34;, &#34;string&#34;)" target="address" />
+            <zeebe:input target="contactPerson" />
+            <zeebe:input target="phoneNumber" />
+            <zeebe:input source="=fromAi(toolCall.countryCode, &#34;Two-letter ISO country code, used as the CC segment when a supplier code is auto-generated. Defaults to XX if omitted.&#34;, &#34;string&#34;)" target="countryCode" />
+            <zeebe:input target="supplierCode" />
+            <zeebe:input source="false" target="sanctioned" />
+            <zeebe:output source="=companyCrudResult" target="toolCallResult" />
+            <zeebe:output source="=operationStatus" target="createCompany.operationStatus" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_16iuwit" name="Search for employee" zeebe:modelerTemplate="com.example.camunda.search-employee" zeebe:modelerTemplateVersion="5" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%23007bff&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Ccircle cx=&#39;11&#39; cy=&#39;11&#39; r=&#39;8&#39;%3E%3C/circle%3E%3Cpath d=&#39;m21 21-4.35-4.35&#39;%3E%3C/path%3E%3Cpath d=&#39;M9 11a2 2 0 1 0 4 0a2 2 0 0 0-4 0&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>Use this tool to search for an employee of the company</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="search-employee" />
+          <zeebe:ioMapping>
+            <zeebe:input source="FLEXIBLE" target="searchMode" />
+            <zeebe:input source="=fromAi(toolCall.employeeName, &#34;Optional felxible search name of the employee&#34;, &#34;string&#34;)" target="employeeName" />
+            <zeebe:input source="=fromAi(toolCall.department, &#34;Optional department of the employee&#34;, &#34;string&#34;)" target="department" />
+            <zeebe:input target="jobTitle" />
+            <zeebe:input source="=false" target="exactMatch" />
+            <zeebe:input source="=true" target="fuzzyMatching" />
+            <zeebe:output source="=employeeSearchResult" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_0u2tzmn" name="Create customer record" zeebe:modelerTemplate="com.example.camunda.manage-customer-record" zeebe:modelerTemplateVersion="7" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%236f42c1&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Ccircle cx=&#39;12&#39; cy=&#39;7&#39; r=&#39;4&#39;%3E%3C/circle%3E%3Cpath d=&#39;M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2&#39;%3E%3C/path%3E%3Cpath d=&#39;M3 11h4&#39;%3E%3C/path%3E%3Cpath d=&#39;M5 9v4&#39;%3E%3C/path%3E%3Cpath d=&#39;M17 11h4&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>Use this to create a new</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="manage-customer-record" />
+          <zeebe:ioMapping>
+            <zeebe:input source="CREATE" target="operation" />
+            <zeebe:input target="customerId" />
+            <zeebe:input source="=fromAi(toolCall.customerName, &#34;The name of the Customer you need to create.&#34;, &#34;string&#34;)" target="customerName" />
+            <zeebe:input source="=fromAi(toolCall.address, &#34;The address of the customer&#34;, &#34;string&#34;)" target="address" />
+            <zeebe:input source="=fromAi(toolCall.email, &#34;Email address of the customer Must be a valid email address.&#34;, &#34;string&#34;)" target="email" />
+            <zeebe:input source="=fromAi(toolCall.employeeId, &#34;Required for CREATE.&#34;, &#34;string&#34;)" target="employeeId" />
+            <zeebe:input source="=fromAi(toolCall.trustLevel, &#34;Required for CREATE. Use L1, L2, or L3. &#34;, &#34;string&#34;)" target="trustLevel" />
+            <zeebe:output source="=customerCrudResult" target="toolCallResult" />
+            <zeebe:output source="=operationStatus" target="manageCustomer.operationStatus" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_11nrikr" name="Search for company" zeebe:modelerTemplate="com.example.camunda.query-for-company" zeebe:modelerTemplateVersion="5" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%2328a745&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Cpath d=&#39;M3 21h18&#39;%3E%3C/path%3E%3Cpath d=&#39;M5 21V7l8-4v18&#39;%3E%3C/path%3E%3Cpath d=&#39;M19 21V11l-6-4&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>Use this tool in order to seach for details about a Company</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="query-for-company" />
+          <zeebe:ioMapping>
+            <zeebe:input source="FLEXIBLE" target="searchMode" />
+            <zeebe:input source="=fromAi(toolCall.companyName, &#34;Optional. This is the name of the company you&#39;re looking fro&#34;, &#34;string&#34;)" target="companyName" />
+            <zeebe:input target="industry" />
+            <zeebe:input target="city" />
+            <zeebe:input target="revenue" />
+            <zeebe:input target="supplierCode" />
+            <zeebe:input source="=true" target="fuzzyMatching" />
+            <zeebe:output source="=companySearchResult" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_1juddfo" name="Create employee record" zeebe:modelerTemplate="com.example.camunda.manage-employee-record" zeebe:modelerTemplateVersion="5" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%230f766e&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Crect x=&#39;3&#39; y=&#39;4&#39; width=&#39;18&#39; height=&#39;16&#39; rx=&#39;2&#39; ry=&#39;2&#39;%3E%3C/rect%3E%3Ccircle cx=&#39;8&#39; cy=&#39;10&#39; r=&#39;2&#39;%3E%3C/circle%3E%3Cpath d=&#39;M6 16c0-1.5 1-2.5 2-2.5s2 1 2 2.5&#39;%3E%3C/path%3E%3Cline x1=&#39;13&#39; y1=&#39;9&#39; x2=&#39;18&#39; y2=&#39;9&#39;%3E%3C/line%3E%3Cline x1=&#39;13&#39; y1=&#39;12&#39; x2=&#39;18&#39; y2=&#39;12&#39;%3E%3C/line%3E%3Cline x1=&#39;13&#39; y1=&#39;15&#39; x2=&#39;18&#39; y2=&#39;15&#39;%3E%3C/line%3E%3C/svg%3E">
+        <bpmn:documentation>Use this tool to create new Employee reocrds</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="manage-employee-record" />
+          <zeebe:ioMapping>
+            <zeebe:input source="CREATE" target="operation" />
+            <zeebe:input target="employeeId" />
+            <zeebe:input source="=fromAi(toolCall.fullName, &#34;Full name of the new employee.&#34;, &#34;string&#34;)" target="fullName" />
+            <zeebe:input source="=fromAi(toolCall.jobTitle, &#34;Job title of new employee.&#34;, &#34;string&#34;)" target="jobTitle" />
+            <zeebe:input source="=fromAi(toolCall.department, &#34;Department of the employee.&#34;, &#34;string&#34;)" target="department" />
+            <zeebe:input target="phoneNumber" />
+            <zeebe:output source="=employeeCrudResult" target="toolCallResult" />
+            <zeebe:output source="=operationStatus" target="createEmployee.operationStatus" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_0zzpxe2" name="Search account" zeebe:modelerTemplate="com.example.camunda.search-account" zeebe:modelerTemplateVersion="4" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%23007bff&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Crect x=&#39;2&#39; y=&#39;7&#39; width=&#39;20&#39; height=&#39;13&#39; rx=&#39;2&#39; ry=&#39;2&#39;%3E%3C/rect%3E%3Cline x1=&#39;16&#39; y1=&#39;3&#39; x2=&#39;8&#39; y2=&#39;3&#39;%3E%3C/line%3E%3Cline x1=&#39;12&#39; y1=&#39;7&#39; x2=&#39;12&#39; y2=&#39;3&#39;%3E%3C/line%3E%3Ccircle cx=&#39;8&#39; cy=&#39;13&#39; r=&#39;1&#39;%3E%3C/circle%3E%3Ccircle cx=&#39;12&#39; cy=&#39;13&#39; r=&#39;1&#39;%3E%3C/circle%3E%3Ccircle cx=&#39;16&#39; cy=&#39;13&#39; r=&#39;1&#39;%3E%3C/circle%3E%3C/svg%3E">
+        <bpmn:documentation>Use this tool to search for an existing account</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="search-account" />
+          <zeebe:ioMapping>
+            <zeebe:input source="FLEXIBLE" target="searchMode" />
+            <zeebe:input source="=fromAi(toolCall.accountId, &#34;Optional account ID &#34;, &#34;string&#34;)" target="accountId" />
+            <zeebe:input target="customerAccountId" />
+            <zeebe:input source="=fromAi(toolCall.accountNumber, &#34;Optional this is the account number that you&#39;re searching for&#34;, &#34;string&#34;)" target="accountNumber" />
+            <zeebe:input source="=fromAi(toolCall.customerId, &#34;This is the ID of the customer you can use to find the account for&#34;, &#34;string&#34;)" target="customerId" />
+            <zeebe:output source="=accountSearchResult" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_0m074b1" name="Create new account" zeebe:modelerTemplate="com.example.camunda.manage-account-record" zeebe:modelerTemplateVersion="6" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%230d6efd&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Crect x=&#39;2&#39; y=&#39;5&#39; width=&#39;20&#39; height=&#39;14&#39; rx=&#39;2&#39; ry=&#39;2&#39;%3E%3C/rect%3E%3Cline x1=&#39;2&#39; y1=&#39;10&#39; x2=&#39;22&#39; y2=&#39;10&#39;%3E%3C/line%3E%3Ccircle cx=&#39;8&#39; cy=&#39;15&#39; r=&#39;1&#39;%3E%3C/circle%3E%3Cpath d=&#39;M14 15h5&#39;%3E%3C/path%3E%3Cpath d=&#39;M16 3v4&#39;%3E%3C/path%3E%3Cpath d=&#39;M14 5h4&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>Use this tool to create a new account</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="manage-account-record" />
+          <zeebe:ioMapping>
+            <zeebe:input source="CREATE" target="operation" />
+            <zeebe:input target="accountId" />
+            <zeebe:input source="=fromAi(toolCall.accountNumber, &#34;This is the account number, this follow the fomat of AA-000-YYY eg. SA-1001-NDL&#34;, &#34;string&#34;)" target="accountNumber" />
+            <zeebe:input source="=fromAi(toolCall.accountType, &#34;Use SAVINGS, CORPORATE, or PERSONAL.&#34;, &#34;string&#34;)" target="accountType" />
+            <zeebe:input source="=fromAi(toolCall.balance, &#34;This initilal balance of the account&#34;, &#34;number&#34;)" target="balance" />
+            <zeebe:input source="=fromAi(toolCall.currency, &#34;This is a 3 letter representation of the currency of the account e.g EUR&#34;, &#34;string&#34;)" target="currency" />
+            <zeebe:input source="=&#34;ACTIVE&#34;" target="status" />
+            <zeebe:input source="1.3" target="interestRate" />
+            <zeebe:input source="=fromAi(toolCall.openedDate, &#34;Optional opening date ISO date (yyyy-MM-dd).&#34;, &#34;string&#34;)" target="openedDate" />
+            <zeebe:input source="=fromAi(toolCall.lastActivityDate, &#34;last active date. default today. (yyyy-MM-dd).&#34;, &#34;string&#34;)" target="lastActivityDate" />
+            <zeebe:output source="=accountCrudResult" target="toolCallResult" />
+            <zeebe:output source="=operationStatus" target="manageAccount.operationStatus" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+    </bpmn:adHocSubProcess>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1njnyph">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_062mefk_di" bpmnElement="Event_062mefk">
+        <dc:Bounds x="1082" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05ndrcm_di" bpmnElement="Activity_09ymdth" isExpanded="true">
+        <dc:Bounds x="270" y="18" width="780" height="492" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xcpf9i_di" bpmnElement="Activity_048s4i5">
+        <dc:Bounds x="530" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1kxhr5p" bpmnElement="Activity_0ol2lhr">
+        <dc:Bounds x="470" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0a2odfj" bpmnElement="Activity_16iuwit">
+        <dc:Bounds x="600" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_05vacxh" bpmnElement="Activity_0m074b1">
+        <dc:Bounds x="730" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ya6o4e" bpmnElement="Activity_1juddfo">
+        <dc:Bounds x="600" y="400" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1w5g48z" bpmnElement="Activity_11nrikr">
+        <dc:Bounds x="460" y="400" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1lalkt9" bpmnElement="Activity_0zzpxe2">
+        <dc:Bounds x="740" y="400" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1es4l9h_di" bpmnElement="Activity_18020de">
+        <dc:Bounds x="330" y="110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1m3nhqm" bpmnElement="Activity_0u2tzmn">
+        <dc:Bounds x="330" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1u35t0n_di" bpmnElement="Flow_1u35t0n">
+        <di:waypoint x="186" y="118" />
+        <di:waypoint x="270" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cfwpz5_di" bpmnElement="Flow_0cfwpz5">
+        <di:waypoint x="1050" y="118" />
+        <di:waypoint x="1082" y="118" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

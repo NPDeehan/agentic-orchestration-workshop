@@ -1,0 +1,7 @@
+import './fonts.css'
+import 'bpmn-js/dist/assets/diagram-js.css'
+import 'bpmn-js/dist/assets/bpmn-js.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
+import './tokens.css'
+import './base.css'
+import './bpmn.css'

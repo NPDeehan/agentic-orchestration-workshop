@@ -1,0 +1,67 @@
+/*
+ * Camunda brand v4.0 tokens (light "Enterprise" mode).
+ * Source: sourceMaterial/camunda-brand-guidelines-v4.md
+ * Only approved colours and their generated tints/shades.
+ */
+:root {
+  /* Neutrals */
+  --c-black: #1b1b1b;
+  --c-charcoal: #323232;
+  --c-mid-gray: #6f6f6f;
+  --c-gray: #bbbbbb;
+  --c-white: #ffffff;
+  --c-sand: #f5f3ed;
+  --c-warm-light-gray: #dfddd8;
+
+  /* Orange family */
+  --c-orange-900: #32221a;
+  --c-orange-800: #753515;
+  --c-orange-700: #a24313;
+  --c-orange-600: #cf5010;
+  --c-orange: #fc5d0d;
+  --c-orange-400: #ff905c;
+  --c-orange-200: #febe9e;
+  --c-orange-100: #fedfcf;
+  --c-orange-50: #ffefe7;
+
+  /* Purple family */
+  --c-purple-900: #232332;
+  --c-purple-800: #3a3976;
+  --c-purple-700: #4a49a4;
+  --c-purple-600: #5958d1;
+  --c-purple: #6967ff;
+  --c-purple-400: #8785ff;
+  --c-purple-200: #c3c2ff;
+  --c-purple-100: #e1e1ff;
+  --c-purple-50: #f0f0ff;
+
+  /* Green family */
+  --c-green-900: #2d3021;
+  --c-green-800: #617034;
+  --c-green-700: #859b41;
+  --c-green-600: #a8c54d;
+  --c-green: #cbf05a;
+  --c-green-400: #d5f37b;
+  --c-green-200: #eaf9bd;
+  --c-green-100: #f5fcde;
+  --c-green-50: #fafdee;
+
+  /* Alerts (status only) */
+  --c-success: #00a96c;
+  --c-error: #d70000;
+
+  /* Semantic */
+  --bg: var(--c-white);           /* template: white content slides, Sand for dividers and cards */
+  --surface: var(--c-white);
+  --text: var(--c-black);
+  --text-muted: var(--c-mid-gray);
+  --line: var(--c-warm-light-gray);
+
+  /* Type */
+  --font-display: 'Libertinus Serif', Georgia, serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  --radius: 0;                  /* template: square corners */
+  --gutter: 80px;               /* template margin 45 pt */
+}

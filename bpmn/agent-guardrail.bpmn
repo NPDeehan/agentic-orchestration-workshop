@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_AgentGuardrail" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Workshop deck generator" exporterVersion="1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <bpmn:process id="AgentGuardrail" name="Gatekeeper guardrail" isExecutable="true">
+    <bpmn:startEvent id="start">
+      <bpmn:outgoing>f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:adHocSubProcess id="agent" name="Agent">
+      <bpmn:incoming>f1</bpmn:incoming>
+      <bpmn:outgoing>f2</bpmn:outgoing>
+      <bpmn:serviceTask id="search" name="Search for customer">
+      </bpmn:serviceTask>
+      <bpmn:userTask id="approve_delete" name="Approve deletion">
+        <bpmn:outgoing>f3</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="gw_ok" name="Approved?">
+        <bpmn:incoming>f3</bpmn:incoming>
+        <bpmn:outgoing>f4</bpmn:outgoing>
+        <bpmn:outgoing>f5</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:serviceTask id="delete" name="Delete customer">
+        <bpmn:incoming>f4</bpmn:incoming>
+      </bpmn:serviceTask>
+      <bpmn:endEvent id="end_no" name="Rejected">
+        <bpmn:incoming>f5</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="f3" sourceRef="approve_delete" targetRef="gw_ok" />
+      <bpmn:sequenceFlow id="f4" name="Yes" sourceRef="gw_ok" targetRef="delete" />
+      <bpmn:sequenceFlow id="f5" name="No" sourceRef="gw_ok" targetRef="end_no" />
+    </bpmn:adHocSubProcess>
+    <bpmn:endEvent id="end">
+      <bpmn:incoming>f2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="f1" sourceRef="start" targetRef="agent" />
+    <bpmn:sequenceFlow id="f2" sourceRef="agent" targetRef="end" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_AgentGuardrail">
+    <bpmndi:BPMNPlane id="BPMNPlane_AgentGuardrail" bpmnElement="AgentGuardrail">
+      <bpmndi:BPMNShape id="start_di" bpmnElement="start">
+        <dc:Bounds x="150" y="242" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="agent_di" bpmnElement="agent" isExpanded="true">
+        <dc:Bounds x="250" y="100" width="660" height="320" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="search_di" bpmnElement="search">
+        <dc:Bounds x="300" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="approve_delete_di" bpmnElement="approve_delete">
+        <dc:Bounds x="450" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="gw_ok_di" bpmnElement="gw_ok" isMarkerVisible="true">
+        <dc:Bounds x="600" y="285" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="570.0" y="251" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="delete_di" bpmnElement="delete">
+        <dc:Bounds x="700" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_no_di" bpmnElement="end_no">
+        <dc:Bounds x="607" y="365" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="570.0" y="407" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_di" bpmnElement="end">
+        <dc:Bounds x="970" y="242" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="f1_di" bpmnElement="f1">
+        <di:waypoint x="186" y="260.0" />
+        <di:waypoint x="250" y="260.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f2_di" bpmnElement="f2">
+        <di:waypoint x="910" y="260.0" />
+        <di:waypoint x="970" y="260.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f3_di" bpmnElement="f3">
+        <di:waypoint x="550" y="310.0" />
+        <di:waypoint x="600" y="310.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f4_di" bpmnElement="f4">
+        <di:waypoint x="650" y="310.0" />
+        <di:waypoint x="700" y="310.0" />
+        <bpmndi:BPMNLabel><dc:Bounds x="652" y="293" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f5_di" bpmnElement="f5">
+        <di:waypoint x="625" y="335" />
+        <di:waypoint x="625" y="365" />
+        <bpmndi:BPMNLabel><dc:Bounds x="630" y="343" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

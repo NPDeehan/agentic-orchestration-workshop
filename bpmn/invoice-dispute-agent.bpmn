@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_InvoiceDispute" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Workshop deck generator" exporterVersion="1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <bpmn:process id="InvoiceDispute" name="Invoice dispute" isExecutable="true">
+    <bpmn:startEvent id="start" name="Invoice disputed">
+      <bpmn:outgoing>f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:adHocSubProcess id="agent" name="Dispute agent">
+      <bpmn:incoming>f1</bpmn:incoming>
+      <bpmn:outgoing>f2</bpmn:outgoing>
+      <bpmn:serviceTask id="get_account" name="Get account details">
+      </bpmn:serviceTask>
+      <bpmn:userTask id="display" name="Display findings to clerk">
+      </bpmn:userTask>
+      <bpmn:sendTask id="contact" name="Contact sales rep">
+        <bpmn:outgoing>f3</bpmn:outgoing>
+      </bpmn:sendTask>
+      <bpmn:intermediateCatchEvent id="reply" name="Reply from sales rep">
+        <bpmn:incoming>f3</bpmn:incoming>
+        <bpmn:messageEventDefinition id="reply_med" />
+      </bpmn:intermediateCatchEvent>
+      <bpmn:serviceTask id="cancel" name="Cancel invoice">
+        <bpmn:outgoing>f4</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:exclusiveGateway id="gw_new" name="New invoice needed?">
+        <bpmn:incoming>f4</bpmn:incoming>
+        <bpmn:outgoing>f5</bpmn:outgoing>
+        <bpmn:outgoing>f6</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:endEvent id="end_no">
+        <bpmn:incoming>f5</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:serviceTask id="create" name="Create new invoice">
+        <bpmn:incoming>f6</bpmn:incoming>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="f3" sourceRef="contact" targetRef="reply" />
+      <bpmn:sequenceFlow id="f4" sourceRef="cancel" targetRef="gw_new" />
+      <bpmn:sequenceFlow id="f5" name="No" sourceRef="gw_new" targetRef="end_no" />
+      <bpmn:sequenceFlow id="f6" name="Yes" sourceRef="gw_new" targetRef="create" />
+    </bpmn:adHocSubProcess>
+    <bpmn:endEvent id="end" name="Dispute resolved">
+      <bpmn:incoming>f2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="f1" sourceRef="start" targetRef="agent" />
+    <bpmn:sequenceFlow id="f2" sourceRef="agent" targetRef="end" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_InvoiceDispute">
+    <bpmndi:BPMNPlane id="BPMNPlane_InvoiceDispute" bpmnElement="InvoiceDispute">
+      <bpmndi:BPMNShape id="start_di" bpmnElement="start">
+        <dc:Bounds x="150" y="312" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="113.0" y="354" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="agent_di" bpmnElement="agent" isExpanded="true">
+        <dc:Bounds x="250" y="150" width="640" height="360" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="get_account_di" bpmnElement="get_account">
+        <dc:Bounds x="290" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="display_di" bpmnElement="display">
+        <dc:Bounds x="520" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="contact_di" bpmnElement="contact">
+        <dc:Bounds x="290" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="reply_di" bpmnElement="reply">
+        <dc:Bounds x="440" y="342" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="403.0" y="384" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="cancel_di" bpmnElement="cancel">
+        <dc:Bounds x="520" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="gw_new_di" bpmnElement="gw_new" isMarkerVisible="true">
+        <dc:Bounds x="660" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="630.0" y="301" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_no_di" bpmnElement="end_no">
+        <dc:Bounds x="770" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="create_di" bpmnElement="create">
+        <dc:Bounds x="735" y="400" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end_di" bpmnElement="end">
+        <dc:Bounds x="950" y="312" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="913.0" y="354" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="f1_di" bpmnElement="f1">
+        <di:waypoint x="186" y="330.0" />
+        <di:waypoint x="250" y="330.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f2_di" bpmnElement="f2">
+        <di:waypoint x="890" y="330.0" />
+        <di:waypoint x="950" y="330.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f3_di" bpmnElement="f3">
+        <di:waypoint x="390" y="360.0" />
+        <di:waypoint x="440" y="360.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f4_di" bpmnElement="f4">
+        <di:waypoint x="620" y="360.0" />
+        <di:waypoint x="660" y="360.0" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f5_di" bpmnElement="f5">
+        <di:waypoint x="710" y="360.0" />
+        <di:waypoint x="770" y="360.0" />
+        <bpmndi:BPMNLabel><dc:Bounds x="712" y="343" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f6_di" bpmnElement="f6">
+        <di:waypoint x="685.0" y="385" />
+        <di:waypoint x="685.0" y="440.0" />
+        <di:waypoint x="735" y="440.0" />
+        <bpmndi:BPMNLabel><dc:Bounds x="690" y="398" width="40" height="14" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

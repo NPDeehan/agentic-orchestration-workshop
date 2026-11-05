@@ -1,0 +1,76 @@
+/* bpmn-js styling in brand colours */
+.bpmn-frame {
+  position: relative;
+  background: var(--c-sand);   /* template: charts and visuals sit in Sand panels */
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+.bpmn-frame .bjs-powered-by { display: none; }
+.bpmn-frame .djs-container { font-family: var(--font-body) !important; }
+
+.bpmn-frame .djs-element .djs-visual > * { transition: opacity 350ms ease, stroke 250ms ease, fill 250ms ease; }
+.bpmn-frame .djs-connection .djs-visual > path { transition: opacity 350ms ease; }
+
+/* elements not yet revealed */
+.bpmn-frame .djs-element.is-hidden .djs-visual > *,
+.bpmn-frame .djs-element.is-hidden .djs-label { opacity: 0 !important; }
+
+/* everything else dimmed while something is in focus */
+/* dim shapes, but keep their text at Mid gray so it still meets WCAG AA */
+.bpmn-frame.has-focus .djs-element:not(.is-focus):not(.is-context):not(.is-active) .djs-visual > :not(text) { opacity: 0.25; }
+.bpmn-frame.has-focus .djs-element:not(.is-focus):not(.is-context):not(.is-active) .djs-visual > text { fill: #6F6F6F !important; }
+
+/* focus highlight */
+.bpmn-frame .djs-shape.is-focus .djs-visual > rect,
+.bpmn-frame .djs-shape.is-focus .djs-visual > circle,
+.bpmn-frame .djs-shape.is-focus .djs-visual > polygon {
+  stroke: var(--c-purple) !important;
+  stroke-width: 3px !important;
+  fill: var(--c-purple-50) !important;
+}
+.bpmn-frame .djs-shape.is-focus.focus-orange .djs-visual > rect,
+.bpmn-frame .djs-shape.is-focus.focus-orange .djs-visual > circle,
+.bpmn-frame .djs-shape.is-focus.focus-orange .djs-visual > polygon {
+  stroke: var(--c-orange) !important;
+  fill: var(--c-orange-50) !important;
+}
+.bpmn-frame .djs-shape.is-focus.focus-green .djs-visual > rect,
+.bpmn-frame .djs-shape.is-focus.focus-green .djs-visual > circle,
+.bpmn-frame .djs-shape.is-focus.focus-green .djs-visual > polygon {
+  stroke: var(--c-green-700) !important;
+  fill: var(--c-green-50) !important;
+}
+
+/* the agent (ad-hoc sub-process) itself when focused: tint only */
+.bpmn-frame .djs-shape.is-context .djs-visual > rect { stroke: var(--c-purple) !important; stroke-width: 2px !important; }
+
+/* active token pulse (simulated runs) */
+.bpmn-frame .djs-shape.is-active .djs-visual > rect {
+  stroke: var(--c-success) !important;
+  stroke-width: 4px !important;
+  fill: var(--c-green-100) !important;
+}
+
+/* overlay badges used by diagram tours */
+.bpmn-badge {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 3px 9px;
+  border-radius: 0;
+  background: var(--c-black);
+  color: var(--c-white);
+  animation: badge-in 300ms ease;
+}
+@keyframes badge-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* active pulse also for gateways and events */
+.bpmn-frame .djs-shape.is-active .djs-visual > circle,
+.bpmn-frame .djs-shape.is-active .djs-visual > polygon {
+  stroke: var(--c-success) !important;
+  stroke-width: 4px !important;
+  fill: var(--c-green-100) !important;
+}
+.bpmn-frame .djs-shape.is-active .djs-visual > * { opacity: 1 !important; }
