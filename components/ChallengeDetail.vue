@@ -1,12 +1,15 @@
 <script setup lang="ts">
 /** Full challenge card. Content lives in locales/<lang>.ts so it can be translated and reordered. */
 import { computed } from 'vue'
+import { useSlideLink } from '../composables/useSlideLink'
 import { useWorkshop } from '../composables/useWorkshop'
 
 const props = defineProps<{ id: string }>()
 const { t, toolName } = useWorkshop()
 const idx = computed(() => t.value.challenges.findIndex(c => c.id === props.id))
 const c = computed(() => t.value.challenges[idx.value])
+const { find, goTo } = useSlideLink()
+const hasMenu = computed(() => !!find('challenges'))
 const total = computed(() => c.value?.done.reduce((s, d) => s + d.points, 0) ?? 0)
 </script>
 
@@ -23,6 +26,8 @@ const total = computed(() => c.value?.done.reduce((s, d) => s + d.points, 0) ?? 
 
       <div class="eyebrow purple" style="margin-top:12px">{{ t.ui.tryPrompts }}</div>
       <div v-for="p in c.prompts" :key="p" class="prompt">“{{ p }}”</div>
+
+      <button v-if="hasMenu" class="back ch-back" @click="goTo('challenges')">← Challenge menu</button>
     </div>
 
     <div class="right">
@@ -65,10 +70,19 @@ const total = computed(() => c.value?.done.reduce((s, d) => s + d.points, 0) ?? 
   background: var(--c-sand); border: 0; border-radius: 0;
   padding: 12px 16px 12px 40px; font-size: 19px; margin-bottom: 10px; max-width: 34ch; position: relative;
 }
+.left { display: flex; flex-direction: column; }
+.back { margin-top: auto; align-self: flex-start; padding: 6px 0; border: 0; background: none; font: inherit; font-size: 14px; color: var(--c-mid-gray); cursor: pointer; text-decoration: underline; text-decoration-color: var(--c-orange); text-underline-offset: 4px; }
+.back:hover { color: var(--c-black); }
 .right { display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
 .meta { display: grid; gap: 14px; }
 .label { text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 6px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .prompt::before { content: ''; position: absolute; left: 16px; top: 1.05em; width: 10px; height: 10px; background: var(--c-purple); }
 .hint { display: grid; gap: 4px; background: var(--c-orange-50); border: 0; border-radius: 0; padding: 12px 16px; }
+</style>
+
+<style>
+/* Unscoped on purpose: a scoped ":global(html.print) .back" compiles to "html.print" and hides the
+   whole page in print/export mode. The back link is no use in the PDF, so hide just that. */
+html.print .ch-back { display: none; }
 </style>

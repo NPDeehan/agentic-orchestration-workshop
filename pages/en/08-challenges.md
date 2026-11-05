@@ -55,6 +55,7 @@ eyebrow: Winning
 ---
 eyebrow: The challenges
 center: true
+routeAlias: challenges
 ---
 
 # Challenge menu
@@ -101,22 +102,31 @@ eyebrow: Challenge time
 
 ---
 layout: default
+routeAlias: challenge-customer-360
 ---
 
 <ChallengeDetail id="customer-360" />
 
 ---
+routeAlias: challenge-no-duplicates
+---
 
 <ChallengeDetail id="no-duplicates" />
 
+---
+routeAlias: challenge-ask-dont-invent
 ---
 
 <ChallengeDetail id="ask-dont-invent" />
 
 ---
+routeAlias: challenge-find-colleague
+---
 
 <ChallengeDetail id="find-colleague" />
 
+---
+routeAlias: challenge-sanctions-gate
 ---
 
 <ChallengeDetail id="sanctions-gate" />
@@ -145,6 +155,8 @@ eyebrow: Sanctions gate
 ]" />
 
 ---
+routeAlias: challenge-human-approval
+---
 
 <ChallengeDetail id="human-approval" />
 
@@ -172,6 +184,8 @@ eyebrow: Human in the loop for accounts
 ]" />
 
 ---
+routeAlias: challenge-stay-in-your-lane
+---
 
 <ChallengeDetail id="stay-in-your-lane" />
 
@@ -196,33 +210,49 @@ eyebrow: Stay in your lane
 ]" />
 
 ---
+routeAlias: challenge-onboard-business
+---
 
 <ChallengeDetail id="onboard-business" />
 
+---
+routeAlias: challenge-update-with-care
 ---
 
 <ChallengeDetail id="update-with-care" />
 
 ---
+routeAlias: challenge-account-numbers
+---
 
 <ChallengeDetail id="account-numbers" />
 
+---
+routeAlias: challenge-trust-rules
 ---
 
 <ChallengeDetail id="trust-rules" />
 
 ---
+routeAlias: challenge-joint-accounts
+---
 
 <ChallengeDetail id="joint-accounts" />
 
+---
+routeAlias: challenge-approvals-that-wait
 ---
 
 <ChallengeDetail id="approvals-that-wait" />
 
 ---
+routeAlias: challenge-specialist-agents
+---
 
 <ChallengeDetail id="specialist-agents" />
 
+---
+routeAlias: challenge-explain-yourself
 ---
 
 <ChallengeDetail id="explain-yourself" />
