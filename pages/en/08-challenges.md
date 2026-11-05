@@ -62,6 +62,35 @@ center: true
 <div style="margin-top:-6px"><ChallengeMenu /></div>
 
 ---
+layout: split
+ratio: 380px 1fr
+align: center
+eyebrow: On your laptop
+---
+
+<!-- QR code: public/images/qr-site.svg, generated from the GitHub Pages URL below with uqr.
+     If the site URL changes, regenerate it and update the link. -->
+<img src="/images/qr-site.svg" alt="QR code for the workshop slides" style="width:340px;height:340px;display:block">
+
+::right::
+
+# Open the challenges on your own screen
+
+<p class="lead muted">Every challenge, its “done when” criteria and the tool details, at your own pace.</p>
+
+<p class="site-url"><a href="https://npdeehan.github.io/agentic-orchestration-workshop/" target="_blank">npdeehan.github.io/agentic-orchestration-workshop</a></p>
+
+<ul class="tight small">
+  <li>Arrow keys move between slides; <code>o</code> shows them all</li>
+  <li>Click a tool card to see its operations and inputs</li>
+</ul>
+
+<style>
+.site-url { font-size: 24px; margin: 8px 0 22px; }
+.site-url a { text-decoration-color: var(--c-orange); }
+</style>
+
+---
 layout: breakout
 eyebrow: Challenge time
 ---
