@@ -197,7 +197,7 @@ eyebrow: Stay in your lane
 
 # What success could look like
 
-<p class="muted">The request leaves the agent instead of being attempted, and a person decides what happens next.</p>
+<p class="muted">The request leaves the agent without being attempted or answered, and a person decides what happens next.</p>
 
 ::right::
 
@@ -206,7 +206,7 @@ eyebrow: Stay in your lane
   { kind: 'agent', text: 'This is outside my goal of onboarding customers.' },
   { kind: 'guard', text: 'Escalation: out-of-scope request' },
   { kind: 'human', text: 'Operations team receives the original request' },
-  { kind: 'done', text: 'Nothing deleted. The escalation is on record.' },
+  { kind: 'done', text: 'No reply to the user and nothing deleted. The escalation is on record.' },
 ]" />
 
 ---
@@ -252,10 +252,10 @@ routeAlias: challenge-specialist-agents
 <ChallengeDetail id="specialist-agents" />
 
 ---
-routeAlias: challenge-explain-yourself
+routeAlias: challenge-plan-for-failure
 ---
 
-<ChallengeDetail id="explain-yourself" />
+<ChallengeDetail id="plan-for-failure" />
 
 ---
 eyebrow: Stuck?
