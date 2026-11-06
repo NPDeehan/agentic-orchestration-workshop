@@ -5,7 +5,7 @@ host: Niall Deehan
 hostRole: Camunda
 coHost: Marco Lopes            # leave empty ('') when presenting alone
 coHostRole: Camunda
-coHostPhoto: ''                # e.g. /images/people/cohost.png; empty shows a placeholder
+coHostPhoto: /images/people/marco.jpg   # empty shows a placeholder
 eventDate: ''                  # e.g. December 15, 2026 (no ordinal suffixes)
 locale: en                     # strings for components come from locales/<locale>.ts
 # ─── Deck settings ───────────────────────────────────────────────────────────

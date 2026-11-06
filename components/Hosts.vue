@@ -35,7 +35,7 @@ const hosts = computed(() => {
 .hosts { height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .row { display: flex; gap: 96px; margin-top: 22px; }
 .host { width: 320px; }
-.photo { display: block; width: 320px; height: 340px; object-fit: cover; }
+.photo { display: block; width: 320px; height: 340px; object-fit: cover; object-position: 50% 15%; } /* portrait photos: keep the head in frame */
 .host h2 { font-family: var(--font-display); font-weight: 400; font-size: 44px; line-height: 1.1; margin: 20px 0 4px; }
 .role { font-size: 22px; color: var(--text-muted); margin: 0; }
 .single .host { width: 400px; }

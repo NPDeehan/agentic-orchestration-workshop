@@ -149,6 +149,6 @@ Use a typographic apostrophe (’) inside these attribute strings; a straight ' 
 ## Iteration 2 to-dos
 
 - Logo: official CAMUNDA wordmark is in place (`brand/`); the C mark is kept as `camunda-mark-*.svg`
-- Placeholders: search for `<Placeholder` (scenario photo)
+- Placeholders: none left; `<Placeholder>` is still available for new image slots
 - Screenshots in `public/images/screens` and `patterns` come from the previous deck; replace with
   current onboarding-agent screenshots

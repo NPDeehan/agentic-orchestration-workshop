@@ -26,10 +26,11 @@ eyebrow: The scenario
 
 ::right::
 
-<Placeholder label="Photo: bank employee with a customer" note="Natural, candid photography. No AI-generated imagery." />
+<img src="/images/workshop-group.jpg" alt="A presenter talks a small group through a BPMN process on a laptop" class="scenario-photo">
 
 <style>
 .reqs { display: grid; gap: 10px; margin-top: 22px; }
+.scenario-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 58% 50%; }
 .prompt-bubble { position: relative; background: var(--c-sand); padding: 12px 16px 12px 40px; font-size: 18px; max-width: 34ch; }
 .prompt-bubble::before { content: ''; position: absolute; left: 16px; top: 1.05em; width: 10px; height: 10px; background: var(--c-purple); }
 </style>
