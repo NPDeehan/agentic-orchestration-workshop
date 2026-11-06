@@ -26,7 +26,31 @@ export interface Challenge {
 
 export interface LoopStep { key?: string; actor: 'llm' | 'engine'; title: string; short: string; text: string }
 
+export type ArchKind = 'camunda' | 'yours' | 'people' | 'agent'
+
+export interface ArchPart {
+  title: string
+  kind: ArchKind
+  /** one line shown in the box */
+  sub: string
+  summary: string
+  points: string[]
+  /** how the part shows up in this workshop */
+  workshop?: string
+}
+
 export interface Locale {
+  architecture: {
+    hintEyebrow: string
+    hintTitle: string
+    hint: string
+    groupHint: string
+    workshopLabel: string
+    kinds: Record<ArchKind, string>
+    bands: Record<'design' | 'cluster', string>
+    edges: Record<string, string>
+    parts: Record<string, ArchPart>
+  }
   ui: Record<string, any> & { levels: Record<Level, string> }
   loop: {
     actors: { llm: string; engine: string }

@@ -156,6 +156,124 @@ const en: Locale = {
     },
   ],
 
+  architecture: {
+    hintEyebrow: 'Explore',
+    hintTitle: 'Click any component',
+    hint: 'Each one opens up to show what it does, and where you will meet it in this workshop.',
+    groupHint: 'Click a part inside to go deeper. Click the frame again to close it.',
+    workshopLabel: 'In this workshop',
+    kinds: { camunda: 'Camunda', yours: 'Your systems', people: 'Your people', agent: 'AI agents' },
+    bands: { design: 'Design and management', cluster: 'Orchestration cluster' },
+    edges: { deploys: 'deploys', provisions: 'provisions', jobs: 'jobs', rest: 'REST', tasks: 'tasks', exports: 'exports', reads: 'reads' },
+    parts: {
+      modeler: {
+        title: 'Web Modeler', kind: 'camunda', sub: 'BPMN · DMN · forms',
+        summary: 'Where processes, decisions and forms are drawn, tested and deployed.',
+        points: ['BPMN for processes, DMN for decisions, forms for people', 'Play runs a model before it is deployed', 'Models are files, so they live in git next to your code'],
+        workshop: 'You build and deploy your agent process here.',
+      },
+      console: {
+        title: 'Console', kind: 'camunda', sub: 'clusters · credentials',
+        summary: 'Creates and manages clusters.',
+        points: ['Create clusters and choose their version', 'Client credentials for workers and applications', 'Usage and health metrics'],
+        workshop: 'Your cluster and its API credentials come from here.',
+      },
+      'mgmt-identity': {
+        title: 'Management Identity', kind: 'camunda', sub: 'secures the tools',
+        summary: 'Controls who can use the design and management tools.',
+        points: ['Secures Web Modeler, Console and Optimize', 'Federates to your identity provider over OIDC'],
+      },
+      idp: {
+        title: 'Identity provider', kind: 'yours', sub: 'Entra ID · Okta · Keycloak',
+        summary: 'The user directory you already have.',
+        points: ['Entra ID, Okta, Keycloak or any OIDC provider', 'Both identity layers federate to it, so there is no second user directory'],
+      },
+      design: {
+        title: 'Design and management', kind: 'camunda', sub: 'model · deploy · manage',
+        summary: 'Where processes are designed, and where clusters and access are managed.',
+        points: ['Web Modeler to draw, test and deploy models', 'Console to create and manage clusters', 'Management Identity to control who can use the tools'],
+        workshop: 'You build your agent in Web Modeler.',
+      },
+      cluster: {
+        title: 'Orchestration cluster', kind: 'camunda', sub: 'engine · API · Operate · Tasklist · Identity',
+        summary: 'Since 8.8, the runtime ships as one distribution with one configuration.',
+        points: ['Zeebe, Operate, Tasklist and Identity in one deployable', 'One configuration file and one API', 'What used to be four services is now one thing to run'],
+      },
+      api: {
+        title: 'Orchestration Cluster API', kind: 'camunda', sub: 'REST · gRPC job streaming · MCP server',
+        summary: 'One API for everything that talks to the cluster.',
+        points: ['REST to start processes, query state and correlate messages', 'gRPC to stream jobs to workers', 'An MCP server, so agents can use the cluster as a tool'],
+      },
+      zeebe: {
+        title: 'Zeebe engine', kind: 'camunda', sub: 'event-sourced · partitioned · replicated',
+        summary: 'Runs every process instance and never loses its place.',
+        points: ['Every command is appended to a replicated log; state is derived from it', 'Partitioned for scale, replicated with Raft so it survives losing a node', 'No database in the hot path, so it scales horizontally', 'A process can finish in milliseconds or wait days for a signature'],
+        workshop: 'Runs your agent process, including every loop the agent takes.',
+      },
+      operate: {
+        title: 'Operate', kind: 'camunda', sub: 'inspect · retry · migrate',
+        summary: 'See and fix every running and finished instance.',
+        points: ['Variables, incidents and the path each instance took', 'Retry, modify or migrate instances'],
+        workshop: 'Where you check what your agent actually did, tool call by tool call.',
+      },
+      tasklist: {
+        title: 'Tasklist', kind: 'camunda', sub: 'human tasks · forms',
+        summary: 'The inbox for human tasks.',
+        points: ['The engine assigns, tracks and escalates each task', 'Ready-made forms, or your own UI on the task API'],
+        workshop: 'Where a person approves what the agent may not do alone.',
+      },
+      identity: {
+        title: 'Identity', kind: 'camunda', sub: 'authn · authz · tenants',
+        summary: 'Who can see and do what inside the cluster.',
+        points: ['Authentication, authorization and tenants', 'Embedded in the cluster, federated to your identity provider'],
+      },
+      workers: {
+        title: 'Your job workers', kind: 'yours', sub: 'Java · Node · Go · Python',
+        summary: 'Your code, doing the work behind a task.',
+        points: ['The engine publishes a job; a worker picks it up and reports back', 'Written in the language you already use', 'Runs wherever you like, not inside the engine'],
+      },
+      apps: {
+        title: 'Your applications', kind: 'yours', sub: 'portals · services',
+        summary: 'The portals and services that drive processes.',
+        points: ['Start processes, query state and correlate messages', 'All through the same REST API'],
+      },
+      people: {
+        title: 'Your people', kind: 'people', sub: 'approve · decide',
+        summary: 'People are participants with the same guarantees as systems.',
+        points: ['User tasks are first-class steps in the process', 'Approve, decide and handle the exceptions'],
+        workshop: 'Bank employees approve new accounts in the challenges.',
+      },
+      connectors: {
+        title: 'Connectors', kind: 'camunda', sub: '',
+        summary: 'Pre-built integrations that run as ordinary workers.',
+        points: ['REST, Kafka, SAP, SQS, Salesforce, email, databases and more', 'Configured in the model, not coded', 'Includes the AI Agent connector and an MCP client', 'Inbound webhooks and agent-to-agent (A2A)'],
+        workshop: 'The AI Agent connector is the brain of the agent you build.',
+      },
+      external: {
+        title: 'External systems', kind: 'yours', sub: 'core · SaaS · LLMs',
+        summary: 'Everything outside Camunda that a process calls.',
+        points: ['Core systems, SaaS and message queues', 'LLMs from any provider', 'Tools the agent can use'],
+        workshop: 'The bank’s customer and account data that your agent’s tools work with.',
+      },
+      storage: {
+        title: 'Secondary storage', kind: 'camunda', sub: 'Elasticsearch · OpenSearch · relational DB',
+        summary: 'History, search and audit, fed by the engine’s event stream.',
+        points: ['Elasticsearch or OpenSearch, or a relational database from 8.9', 'Never in the engine’s hot path', 'Operate, Tasklist and Optimize read from it'],
+      },
+      optimize: {
+        title: 'Optimize', kind: 'camunda', sub: 'reports · heatmaps',
+        summary: 'Shows where time and cost go.',
+        points: ['Heatmaps, reports and targets', 'Bottlenecks across thousands of instances'],
+        workshop: 'Shows which tools your agent calls most, and how long they take.',
+      },
+      runtime: {
+        title: 'Where it runs', kind: 'camunda', sub: 'SaaS · Helm · Run',
+        summary: 'The same models, APIs and BPMN in all three.',
+        points: ['Camunda SaaS: Camunda operates the cluster', 'Self-managed: your Kubernetes, via Helm', 'Camunda 8 Run: a single node, for development'],
+      },
+    },
+  },
+
   challenges: [
     // ---------- Starter: 10 points ----------
     {

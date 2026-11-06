@@ -203,7 +203,12 @@ function importJson(e: Event) {
 </template>
 
 <style scoped>
-.judge { position: fixed; inset: 0; overflow-y: auto; background: var(--c-sand); color: var(--c-black); font-family: var(--font-body); letter-spacing: -0.02em; padding: 32px 40px 80px; }
+/* color-scheme: light stops the browser drawing dark form controls when the OS (and Slidev) is in dark mode */
+.judge { position: fixed; inset: 0; overflow-y: auto; background: var(--c-sand); color: var(--c-black); font-family: var(--font-body); letter-spacing: -0.02em; padding: 32px 40px 80px; color-scheme: light; accent-color: var(--c-purple); }
+.judge input:not([type=checkbox]) { background: #fff; color: var(--c-black); }
+.judge input::placeholder { color: var(--c-mid-gray); opacity: 1; }
+.judge input:focus-visible { outline: 2px solid var(--c-purple); outline-offset: 1px; border-color: var(--c-purple); }
+.judge input[type=checkbox] { width: 16px; height: 16px; margin: 2px 0 0; cursor: pointer; }
 header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 22px; }
 h1 { font-size: 44px; margin: 0; font-weight: 400; }
 h2 { font-size: 20px; font-weight: 400; margin: 0 0 12px; }

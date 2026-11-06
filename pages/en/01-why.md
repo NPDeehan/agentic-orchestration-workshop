@@ -57,3 +57,11 @@ center: true
 # Camunda orchestrates people, agents and systems
 
 <PlatformFlow />
+
+---
+eyebrow: The architecture
+---
+
+# How Camunda 8 fits together
+
+<ArchitectureMap />

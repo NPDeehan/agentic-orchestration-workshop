@@ -80,7 +80,7 @@ slides.md              headmatter + section imports
 pages/en/*.md          slide content, one file per section
 locales/en.ts          component strings, tools, challenges, agent loop, spectrum
 components/            BpmnDiagram, DiagramTour, AgentLoop, OrchestrationSpectrum,
-                       TasksToProcess, PlatformFlow, ToolCards, DataModel,
+                       TasksToProcess, PlatformFlow, ArchitectureMap, ToolCards, DataModel,
                        ChallengeMenu, ChallengeDetail, AgentRun, Countdown,
                        Difficulty, Orb, Placeholder, CamundaLogo, BrandIcon
 navigator/             the /nav presenter navigator page
