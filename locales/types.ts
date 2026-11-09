@@ -24,6 +24,38 @@ export interface Challenge {
   hint?: string
 }
 
+/** one click of a pattern's walk-through; mirrors DiagramTour's steps */
+export interface PatternStep {
+  title: string
+  text: string
+  /** brand icon name, from public/icons */
+  icon?: string
+  /** element ids highlighted at this step */
+  focus?: string[]
+  tone?: Tone
+  /** element ids lit one after another, on a loop */
+  sequence?: string[]
+  /** small labels pinned to elements */
+  badges?: Record<string, string>
+  /** element ids to zoom to; omit to show the whole model */
+  view?: string[]
+}
+
+export interface Pattern {
+  id: string
+  title: string
+  /** one line shown in the pattern menu */
+  short: string
+  /** fuller description shown on the pattern slide, and on the first click */
+  text: string
+  /** brand icon name, from public/icons */
+  icon: string
+  /** path under bpmn/, without the extension */
+  diagram: string
+  /** the walk-through. Step 0 is the opening state, before any click. */
+  steps: PatternStep[]
+}
+
 export interface LoopStep { key?: string; actor: 'llm' | 'engine'; title: string; short: string; text: string }
 
 export type ArchKind = 'camunda' | 'yours' | 'people' | 'agent'
@@ -67,6 +99,7 @@ export interface Locale {
   }
   domains: { key: string; title: string; tone: Tone; icon?: string; tools: Tool[] }[]
   challenges: Challenge[]
+  patterns: Pattern[]
   scoring: {
     title: string
     levels: Record<Level, number>

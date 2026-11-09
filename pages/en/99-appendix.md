@@ -12,126 +12,57 @@ Agentic patterns and best practices in more depth.
 ---
 eyebrow: Patterns
 center: true
+routeAlias: patterns
 ---
 
 # Seven agentic patterns
 
-<div class="grid-4 patterns" style="margin-top:26px">
-  <div class="card"><BrandIcon name="explainability-decision-trail" :size="36" style="margin-bottom:10px" /><h3>ReAct agent</h3><p>Act, then reason about the result</p></div>
-  <div class="card"><BrandIcon name="mcp-model-context-protocol" :size="36" style="margin-bottom:10px" /><h3>Modern tool use</h3><p>Many systems, one agent</p></div>
-  <div class="card"><BrandIcon name="document-intake" :size="36" style="margin-bottom:10px" /><h3>Agentic RAG</h3><p>Knowledge bases as tools</p></div>
-  <div class="card"><BrandIcon name="compare-what-held-up" :size="36" style="margin-bottom:10px" /><h3>Self reflection</h3><p>A judge reviews the reasoning</p></div>
-  <div class="card"><BrandIcon name="people-and-agents" :size="36" style="margin-bottom:10px" /><h3>Multi-agent</h3><p>Specialists coordinated by a parent</p></div>
-  <div class="card"><BrandIcon name="human-in-the-loop" :size="36" style="margin-bottom:10px" /><h3>Human in the loop</h3><p>People as tools and fallbacks</p></div>
-  <div class="card"><BrandIcon name="approval-cycle-time" :size="36" style="margin-bottom:10px" /><h3>Long running</h3><p>Waiting without losing context</p></div>
-</div>
+<p class="small muted" style="margin-top:-8px">Click a pattern to see how it looks in BPMN.</p>
 
-<style>.patterns .card { min-height: 130px; }</style>
+<div style="margin-top:18px"><PatternMenu /></div>
 
 ---
-layout: split
-ratio: 1fr 1.4fr
-align: center
-eyebrow: Pattern
+layout: default
+routeAlias: pattern-react
 ---
 
-# ReAct agent
-
-<p class="muted">An action agent uses tools, then a reasoning agent reviews what happened and decides the output.</p>
-
-::right::
-
-<img src="/images/patterns/react.png" alt="ReAct agent pattern in BPMN" class="screenshot" style="max-height:420px">
+<PatternDetail id="react" />
 
 ---
-layout: split
-ratio: 1fr 1.4fr
-align: center
-eyebrow: Pattern
+routeAlias: pattern-modern-tool-use
 ---
 
-# Modern tool use
-
-<p class="muted">One agent reaches many systems: MCP servers, CRMs, databases, email and chat, each as a tool.</p>
-
-::right::
-
-<img src="/images/patterns/modern-tool-use.png" alt="Modern tool use pattern in BPMN" class="screenshot" style="max-height:420px">
+<PatternDetail id="modern-tool-use" />
 
 ---
-layout: split
-ratio: 1fr 1.4fr
-align: center
-eyebrow: Pattern
+routeAlias: pattern-agentic-rag
 ---
 
-# Agentic RAG
-
-<p class="muted">Querying and updating a knowledge base are tools the agent chooses to use, not a fixed pre-step.</p>
-
-::right::
-
-<img src="/images/patterns/agentic-rag.png" alt="Agentic RAG pattern in BPMN" class="screenshot" style="max-height:420px">
+<PatternDetail id="agentic-rag" />
 
 ---
-layout: split
-ratio: 1fr 1.4fr
-align: center
-eyebrow: Pattern
+routeAlias: pattern-self-reflection
 ---
 
-# Self reflection
-
-<p class="muted">A judge agent checks the reasoning. If it isn't good enough, the agent goes round again with recommendations stored in long-term memory.</p>
-
-::right::
-
-<img src="/images/patterns/self-reflection.png" alt="Self reflection pattern in BPMN" class="screenshot" style="max-height:420px">
+<PatternDetail id="self-reflection" />
 
 ---
-layout: split
-ratio: 1fr 1.4fr
-align: center
-eyebrow: Pattern
+routeAlias: pattern-multi-agent
 ---
 
-# Multi-agent
-
-<p class="muted">A parent agent coordinates specialist agents, each modeled as a call activity with its own tools.</p>
-
-::right::
-
-<img src="/images/patterns/multi-agent.png" alt="Multi-agent pattern in BPMN" class="screenshot" style="max-height:420px">
+<PatternDetail id="multi-agent" />
 
 ---
-layout: split
-ratio: 1fr 1.4fr
-align: center
-eyebrow: Pattern
+routeAlias: pattern-human-in-the-loop
 ---
 
-# Human in the loop
-
-<p class="muted">People can be tools the agent asks, a takeover path when the agent escalates, and validators of the final result.</p>
-
-::right::
-
-<img src="/images/patterns/human-in-the-loop.png" alt="Human in the loop pattern in BPMN" class="screenshot" style="max-height:420px">
+<PatternDetail id="human-in-the-loop" />
 
 ---
-layout: split
-ratio: 1fr 1.4fr
-align: center
-eyebrow: Pattern
+routeAlias: pattern-long-running
 ---
 
-# Long running
-
-<p class="muted">Tools can wait for replies, time out and send reminders, while the agent keeps its context.</p>
-
-::right::
-
-<img src="/images/patterns/long-running.png" alt="Long running pattern in BPMN" class="screenshot" style="max-height:420px">
+<PatternDetail id="long-running" />
 
 ---
 eyebrow: Best practices

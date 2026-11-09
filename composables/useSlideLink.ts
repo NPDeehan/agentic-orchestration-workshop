@@ -2,8 +2,8 @@ import { useNav } from '@slidev/client'
 
 /**
  * Jump to a slide by its `routeAlias` frontmatter instead of its number, so links keep working
- * when slides are added, removed or hidden. Challenge slides use `challenge-<id>`; the menu
- * slide is `challenges`.
+ * when slides are added, removed or hidden. Challenge slides use `challenge-<id>` and their menu
+ * slide is `challenges`; pattern slides use `pattern-<id>` and their menu slide is `patterns`.
  */
 export function useSlideLink() {
   const { slides, go } = useNav()
@@ -16,3 +16,5 @@ export function useSlideLink() {
 }
 
 export const challengeAlias = (id: string) => `challenge-${id}`
+
+export const patternAlias = (id: string) => `pattern-${id}`

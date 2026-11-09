@@ -19,6 +19,8 @@ const en: Locale = {
     hint: 'Hint',
     hintReveal: 'Press next for a hint',
     challengeMenu: 'Challenge menu',
+    patternMenu: 'Pattern menu',
+    pattern: 'Pattern',
     pickNote: 'Pick 3 or 4 that interest you. Any solution counts if it meets the "done when" criteria.',
     minutesLeft: 'min left',
     timeUp: 'Time is up',
@@ -464,6 +466,278 @@ const en: Locale = {
       connectors: ["REST connector", "query-for-company", "manage-company-record"],
       practice: ["Calling external services", "Designing for failure"],
       hint: "Run the second prompt first and look at Operate. Is that what you want a failed check to look like?",
+    },
+  ],
+
+  patterns: [
+    {
+      id: "react", title: "ReAct agent", icon: "explainability-decision-trail",
+      diagram: "Patterns/1. Reasoning & Acting Agent",
+      short: "Act, then reason about the result",
+      text: "An action agent uses tools, then a reasoning agent reviews what happened and decides the output.",
+      steps: [
+        {
+          title: "Acting and reasoning are separate jobs",
+          text: "One agent works the problem with tools. A second one reads what came back and decides the answer. Splitting them keeps each prompt small and each result inspectable.",
+        },
+        {
+          focus: ["Activity_14iiicl"], badges: { Activity_14iiicl: "Chooses the next tool" }, icon: "ai-agent",
+          title: "The action agent does the work",
+          text: "An ad-hoc sub-process holds the tools it may use. The LLM chooses which to call; the engine runs each one, waits for it and records it.",
+        },
+        {
+          focus: ["Activity_1bp5mpr", "Activity_0gblh4i"], sequence: ["Activity_0gblh4i", "Activity_1bp5mpr", "Activity_0gblh4i"],
+          tone: "green", icon: "dynamic-rerouting",
+          title: "Act, observe, act again",
+          text: "Every tool result goes back into the agent’s context, so it keeps acting until it has enough. Tools run in whatever order and however many times the case needs.",
+        },
+        {
+          focus: ["Activity_15ydv5t"], tone: "orange", badges: { Activity_15ydv5t: "No tools of its own" },
+          icon: "compare-what-held-up",
+          title: "A reasoning agent reviews the run",
+          text: "It receives the whole tool history as context but has no tools itself. Nothing it does can change a record. Its only job is to make sense of what happened.",
+        },
+        {
+          focus: ["Event_0xd3qsa"], tone: "orange", icon: "audit-trail",
+          title: "One considered answer out",
+          text: "The process still ends at a defined event, with every tool call and both agents’ reasoning on the audit trail.",
+        },
+      ],
+    },
+    {
+      id: "modern-tool-use", title: "Modern tool use", icon: "mcp-model-context-protocol",
+      diagram: "Patterns/2. Modern Tool Use",
+      short: "Many systems, one agent",
+      text: "One agent reaches many systems: MCP servers, CRMs, databases, email and chat, each as a tool.",
+      steps: [
+        {
+          title: "An agent is only as useful as its tools",
+          text: "A capable model with nothing to call is a chat window. What makes it an agent is reach into the systems the work actually lives in.",
+        },
+        {
+          focus: ["Activity_14iiicl"], view: ["Activity_14iiicl"], icon: "ai-agent",
+          title: "The boundary is the tool list",
+          text: "Everything drawn inside the ad-hoc sub-process is available to the agent. Nothing outside it is. That boundary is your scope control, and everyone can see it.",
+        },
+        {
+          focus: ["Activity_1bp5mpr"], view: ["Activity_1bp5mpr", "Participant_0tnqy1c"], tone: "purple",
+          icon: "mcp-model-context-protocol",
+          title: "MCP: tools discovered at runtime",
+          text: "One MCP client task exposes every tool an MCP server offers. Add a tool on the server and the agent can use it without a change to the model.",
+        },
+        {
+          focus: ["Activity_1rm4n3q", "Activity_1698ymf", "Activity_0wi87jd"],
+          view: ["Activity_1rm4n3q", "Activity_1698ymf", "Participant_092j2gd", "Participant_07oscts"],
+          tone: "green", icon: "systems-applications",
+          title: "Systems of record, through connectors",
+          text: "HubSpot, Salesforce, a database. Each is an ordinary service task with its own credentials and retries, so the agent never holds a key or writes a query.",
+        },
+        {
+          focus: ["Activity_1m7bxoy", "Activity_1p38qxc", "Activity_0q0ogx7"],
+          view: ["Activity_1m7bxoy", "Activity_1p38qxc", "Activity_0q0ogx7"],
+          tone: "green", icon: "chat-reach-leaders",
+          title: "Reaching people is just another tool",
+          text: "Email, Slack, Teams. From the agent’s side there is no difference between telling a person something and calling a system.",
+        },
+        {
+          focus: ["Activity_14iiicl"], badges: { Activity_14iiicl: "Picks which, and in what order" },
+          tone: "orange", icon: "agentic-orchestration",
+          title: "The LLM picks, the engine runs",
+          text: "No gateway routes between these. The LLM decides what to call next from the goal and what it has learned, and every call is still executed, retried and recorded by the engine.",
+        },
+      ],
+    },
+    {
+      id: "agentic-rag", title: "Agentic RAG", icon: "document-intake",
+      diagram: "Patterns/3. Agentic Retrieval-Augmented Generation",
+      short: "Knowledge bases as tools",
+      text: "Querying and updating a knowledge base are tools the agent chooses to use, not a fixed pre-step.",
+      steps: [
+        {
+          title: "Retrieval is a decision, not a pre-step",
+          text: "Classic RAG stuffs documents into the prompt before the model runs. Here the agent decides whether it needs to look something up, and what to look up.",
+        },
+        {
+          focus: ["Activity_1yewxrb"], view: ["Activity_14iiicl"], icon: "document-intake",
+          title: "Querying is a tool",
+          text: "The agent can search the knowledge base once, five times with different questions, or not at all. It writes its own query from whatever it is missing.",
+        },
+        {
+          focus: ["Activity_0rh6w88"], view: ["Activity_14iiicl"], tone: "green", icon: "continuously-optimized",
+          title: "Writing back is a tool too",
+          text: "What the agent learns in this case can be stored for the next one. The knowledge base is read and write, not a fixed reference.",
+        },
+        {
+          focus: ["Activity_1yewxrb", "Activity_0rh6w88"],
+          view: ["Activity_1yewxrb", "Activity_0rh6w88", "Participant_1w45n9i"],
+          tone: "purple", icon: "composable-architecture",
+          title: "The store stays outside the agent",
+          text: "A vector database sits behind the two tools. Swap it, re-index it or point at a second one, and the agent model does not change.",
+        },
+        {
+          focus: ["Activity_1bp5mpr", "Activity_0gblh4i", "Activity_1yewxrb", "Activity_0rh6w88"],
+          sequence: ["Activity_1yewxrb", "Activity_0gblh4i", "Activity_1yewxrb", "Activity_0rh6w88"],
+          tone: "orange", icon: "dynamic-rerouting",
+          title: "Retrieval competes with the other tools",
+          text: "Looking something up, checking the CRM and sending the email are all candidates at every turn. That is what makes it agentic rather than a pipeline.",
+        },
+      ],
+    },
+    {
+      id: "self-reflection", title: "Self reflection", icon: "compare-what-held-up",
+      diagram: "Patterns/4. Agent Self-Reflection",
+      short: "A judge reviews the reasoning",
+      text: "A judge agent checks the reasoning. If it isn’t good enough, the agent goes round again with recommendations stored in long-term memory.",
+      steps: [
+        {
+          title: "Let the process decide when good is good enough",
+          text: "An agent is a poor judge of its own output inside one run. So the review happens outside it, as a step with its own prompt and its own result.",
+        },
+        {
+          focus: ["Activity_0tzvlha"], view: ["StartEvent_1", "Activity_0tzvlha", "Activity_14iiicl"],
+          icon: "first-agent",
+          title: "Start with what it learned last time",
+          text: "Long-term memory is loaded before the agent runs, so earlier recommendations arrive as context instead of being rediscovered.",
+        },
+        {
+          focus: ["Activity_14iiicl"], view: ["Activity_14iiicl"], icon: "ai-agent",
+          title: "The agent reasons and acts",
+          text: "An ordinary ad-hoc agent with its tools. Nothing in here knows it is about to be reviewed.",
+        },
+        {
+          focus: ["Activity_15ydv5t"], view: ["Activity_15ydv5t", "Gateway_00w8za6", "Activity_16964y1"],
+          tone: "orange", badges: { Activity_15ydv5t: "Different prompt, different model" },
+          icon: "decision-monitoring",
+          title: "A judge scores the reasoning",
+          text: "A separate agent grades what the first one did against explicit criteria. Give it a different prompt, and often a different model, so it is not agreeing with itself.",
+        },
+        {
+          focus: ["Activity_16964y1"], view: ["Activity_16964y1", "Gateway_00w8za6", "TextAnnotation_1w5xtld"],
+          tone: "green", icon: "audit-trail",
+          title: "The verdict is stored, not thrown away",
+          text: "The judge’s recommendations go into long-term memory. That is what makes the next run better rather than identical.",
+        },
+        {
+          focus: ["Gateway_00w8za6", "Activity_0tzvlha"], tone: "orange", icon: "approval-cycle-time",
+          title: "Not good enough means round again",
+          text: "A gateway, not the LLM, decides whether to accept or retry. The loop is in the model, so you can see it, cap it and measure how often it fires.",
+        },
+      ],
+    },
+    {
+      id: "multi-agent", title: "Multi-agent", icon: "people-and-agents",
+      diagram: "Patterns/5. Multi-Agent Workflow",
+      short: "Specialists coordinated by a parent",
+      text: "A parent agent coordinates specialist agents, each modeled as a call activity with its own tools.",
+      steps: [
+        {
+          title: "One agent with forty tools is a bad agent",
+          text: "Past a certain point, more tools in one context window means worse choices. Split the work into specialists and give one agent the job of coordinating them.",
+        },
+        {
+          focus: ["Activity_14iiicl"], badges: { Activity_14iiicl: "Decides who to call" },
+          icon: "orchestration-masterclasses",
+          title: "The parent agent coordinates",
+          text: "It holds the goal and the conversation. What it does not hold is the detail of how each specialist does its job.",
+        },
+        {
+          focus: ["Activity_1bp5mpr", "Activity_0bzhzpu", "Activity_0ywd8ap"],
+          sequence: ["Activity_0bzhzpu", "Activity_1bp5mpr", "Activity_0ywd8ap"],
+          tone: "green", icon: "process-bpmn",
+          title: "Each specialist is a call activity",
+          text: "Classify, validate, enrich. Each is a whole process of its own, with its own prompt, tools and limits, called like any other tool.",
+        },
+        {
+          focus: ["Activity_0ywd8ap"], tone: "purple", icon: "composable",
+          title: "Specialists are reusable and testable on their own",
+          text: "The same validation agent can be called by three different parents. You can version it, test it and improve it without touching anything that calls it.",
+        },
+        {
+          focus: ["Activity_0gblh4i"], view: ["Activity_0gblh4i", "Participant_1x0p5xp"], tone: "purple",
+          icon: "mcp-model-context-protocol",
+          title: "The parent keeps direct tools too",
+          text: "Delegation is not all or nothing. Cheap lookups can stay with the parent while the expensive, specialised work goes to a sub-agent.",
+        },
+        {
+          focus: ["Activity_14iiicl"], tone: "orange", icon: "observability-visibility",
+          title: "Every hand-off is a process instance",
+          text: "Each specialist run has its own instance, history and incident handling. When something goes wrong you can see which agent it was, not just that the system failed.",
+        },
+      ],
+    },
+    {
+      id: "human-in-the-loop", title: "Human in the loop", icon: "human-in-the-loop",
+      diagram: "Patterns/6. Human in the Loop",
+      short: "People as tools and fallbacks",
+      text: "People can be tools the agent asks, a takeover path when the agent escalates, and validators of the final result.",
+      steps: [
+        {
+          title: "Three different ways to involve a person",
+          text: "Human in the loop usually means one approval button. In a process you can model it three ways, and they do different jobs.",
+        },
+        {
+          focus: ["Activity_0g6x4n0"], view: ["Activity_14iiicl"], tone: "green", icon: "people-human-task",
+          title: "1. A person as a tool",
+          text: "A user task sits in the tool list. When the agent needs something only a person knows, it asks, and waits for the answer like any other tool result.",
+        },
+        {
+          focus: ["Activity_123b7gr", "Event_1v3zxdv", "Event_0yt3mgl", "Activity_03wk13e", "Event_0w9oh8x"],
+          tone: "orange", icon: "compliance-risk-ops",
+          title: "2. A person taking over",
+          text: "The agent summarises the case and throws an escalation. A boundary event on the agent catches it, ends the agent’s run and hands the whole case to a person.",
+        },
+        {
+          focus: ["Activity_1o5uh57"], view: ["Activity_15ydv5t", "Activity_1o5uh57", "Event_0xd3qsa"],
+          tone: "green", icon: "guardrails-policy-enforcement",
+          title: "3. A person validating the result",
+          text: "The agent’s answer goes to a human before it leaves the building. The agent cannot route around this: it is a step in the process, not a line in a prompt.",
+        },
+        {
+          focus: ["Activity_14iiicl"], badges: { Activity_14iiicl: "Context survives the wait" },
+          tone: "orange", icon: "approval-cycle-time",
+          title: "Waiting costs nothing",
+          text: "The instance holds its state whether the person answers in four seconds or four days. Nothing is kept alive in memory, and nothing is lost.",
+        },
+      ],
+    },
+    {
+      id: "long-running", title: "Long running", icon: "approval-cycle-time",
+      diagram: "Patterns/7. Long Running Agentic Orchestration",
+      short: "Waiting without losing context",
+      text: "Tools can wait for replies, time out and send reminders, while the agent keeps its context.",
+      steps: [
+        {
+          title: "Real work waits on other people",
+          text: "A customer replies on Thursday. An approver is on holiday. An agent that has to stay running through all that is a liability. One whose waiting is modeled is just a process.",
+        },
+        {
+          focus: ["Activity_1bp5mpr", "Gateway_05h4z0m", "Event_1fj4aga", "Event_0k7k36w", "Event_1czbtz6"],
+          view: ["Activity_1bp5mpr", "Gateway_05h4z0m", "Event_1fj4aga", "Event_0k7k36w", "Event_1czbtz6"],
+          icon: "process-bpmn",
+          title: "A tool can be a whole conversation",
+          text: "Send the email, then wait. An event-based gateway takes whichever comes first: the reply, or the clock. From the agent’s side this is still one tool call.",
+        },
+        {
+          focus: ["Event_0k7k36w", "Event_1czbtz6"],
+          view: ["Gateway_05h4z0m", "Event_1fj4aga", "Event_0k7k36w", "Event_1czbtz6"],
+          tone: "orange", icon: "governance-control",
+          title: "Silence is an answer",
+          text: "The timeout path returns no reply after five days to the agent, as a result it can act on, instead of leaving the run stuck.",
+        },
+        {
+          focus: ["Activity_0gblh4i", "Event_1xi09pf", "Activity_0n0duwn"],
+          view: ["Activity_0gblh4i", "Event_1xi09pf", "Activity_0n0duwn"],
+          tone: "green", icon: "people-human-task",
+          title: "Chase without asking the agent to remember",
+          text: "A non-interrupting timer on the human task sends a reminder and leaves the task open. The nudging is process logic, so it costs no tokens and never gets forgotten.",
+        },
+        {
+          focus: ["Activity_14iiicl"], badges: { Activity_14iiicl: "Context intact" }, tone: "orange",
+          icon: "zeebe-orchestration-engine",
+          title: "The agent picks up where it left off",
+          text: "Its memory, its tool history and its goal are process state. Deploy a new version, restart a node, come back next week: the run continues.",
+        },
+      ],
     },
   ],
 

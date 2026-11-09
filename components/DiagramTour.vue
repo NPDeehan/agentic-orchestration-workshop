@@ -21,20 +21,21 @@ interface TourStep {
   sequence?: string[]
   reveal?: string[]
   active?: string[]
+  view?: string[]
 }
 
 const props = withDefaults(defineProps<{
   diagram: string
   steps: TourStep[]
   height?: string
-  layout?: 'below' | 'side'
+  layout?: 'below' | 'side' | 'fill'
   at?: number
 }>(), { height: '380px', layout: 'below', at: 0 })
 
 const { $clicks } = useSlideContext()
 const idx = computed(() => Math.max(0, Math.min(props.steps.length - 1, ($clicks.value ?? 0) - props.at)))
 const step = computed(() => props.steps[idx.value])
-const diagramSteps = computed(() => props.steps.map(({ focus, tone, badges, sequence, reveal, active }) => ({ focus, tone, badges, sequence, reveal, active })))
+const diagramSteps = computed(() => props.steps.map(({ focus, tone, badges, sequence, reveal, active, view }) => ({ focus, tone, badges, sequence, reveal, active, view })))
 </script>
 
 <template>
@@ -59,6 +60,8 @@ const diagramSteps = computed(() => props.steps.map(({ focus, tone, badges, sequ
 
 <style scoped>
 .tour.below { display: grid; grid-template-rows: auto auto; gap: 18px; }
+/* fill: the diagram takes whatever height is left on the slide, caption underneath */
+.tour.fill { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 16px; height: 100%; min-height: 0; }
 .tour.side { display: grid; grid-template-columns: 1.7fr 1fr; gap: 32px; align-items: center; }
 .caption { display: grid; gap: 12px; }
 .dots { display: flex; gap: 6px; }
