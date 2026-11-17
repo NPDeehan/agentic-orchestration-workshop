@@ -99,8 +99,21 @@ eyebrow: Guardrails
 
 # Guardrails that can’t be talked around
 
+<DiagramTour diagram="agent-guardrails" height="340px" :steps="[
+  { title: 'Prompts guide. Processes enforce.', text: 'An agent can be persuaded to ignore its prompt. It can’t skip a gateway. These are the layers inside one agent, from soft to hard.' },
+  { focus: ['agent'], badges: { agent: 'System prompt: goal and scope' }, icon: 'ai-agent', title: 'The prompt sets goal and scope', text: 'Tell the agent what it is for, what it must never do, and to prefer tools over guessing. Necessary, and nowhere near enough on its own.' },
+  { focus: ['search'], badges: { search: 'fromAi: formats and rules' }, icon: 'guardrails-policy-enforcement', title: 'Tool inputs constrain what the LLM can send', text: 'fromAi descriptions define the formats and limits for every value the agent supplies. Fixed values and process variables take the choice away from the LLM entirely.' },
+  { focus: ['policy','gw_policy','create_account','end_refused'], tone: 'orange', icon: 'decision-monitoring', title: 'Rules inside a tool decide', text: 'The agent can ask to create an account, but a DMN policy check runs first. If the policy says no, the account is never created — whatever the agent intended.' },
+]" />
+
+---
+eyebrow: Guardrails
+---
+
+# Three guardrail patterns
+
 <DiagramTour diagram="Patterns/Guardrail patterns" height="340px" :steps="[
-  { title: 'Prompts guide. Processes enforce.', text: 'An agent can be talked out of its prompt. It can’t skip a sequence flow. Three guardrails drawn into the model: a gatekeeper, a judge, and a way out.' },
+  { title: 'Shapes you will reach for again', text: 'Those layers live inside one agent. These three are structural, and you will recognise them in most agentic processes: a gatekeeper, a judge, and a way out.' },
   { view: ['StartEvent_1','Activity_0wut2wz','Event_1mfjs6d'], focus: ['Activity_0wut2wz'], badges: { Activity_0wut2wz: 'Only these tools exist' }, icon: 'ai-agent', title: 'The boundary is the first guardrail', text: 'Everything the agent may do is drawn inside the ad-hoc sub-process. No instruction talks it into a tool you didn’t give it.' },
   { view: ['StartEvent_1','Activity_0wut2wz','Event_1mfjs6d'], focus: ['Activity_0d7zogn','Activity_09dmz06'], tone: 'green', icon: 'people-human-task', title: '1. A gatekeeper in front of the risky tool', text: 'Query the knowledge base freely. To take an action that changes something, a person verifies first — a sequence flow the agent has no say over.' },
   { view: ['Event_1faxuvl','Activity_1f0tqu2','Activity_17p2bls','Gateway_06gq7jv','Event_0ok3duo','Event_1tdwn94'], focus: ['Activity_17p2bls'], tone: 'orange', badges: { Activity_17p2bls: 'Reviews, cannot act' }, icon: 'decision-monitoring', title: '2. A judge reviews the run', text: 'A second agent grades what the first one did. It has no tools of its own, so its verdict is an opinion the process acts on, never an action.' },
